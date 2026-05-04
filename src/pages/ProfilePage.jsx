@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../hooks/useCart";
 import { formatEGP } from "../utils/currency";
+import UserReviews from "../components/UserReviews";
 
 const ProfilePage = () => {
+  const navigate = useNavigate();
   const storedUser = localStorage.getItem("solex-user");
   const parsedUser = storedUser
     ? JSON.parse(storedUser)
@@ -11,7 +13,7 @@ const ProfilePage = () => {
 
   const [profile, setProfile] = useState(parsedUser);
   const [saved, setSaved] = useState(false);
-  const { wishlistItems } = useCart();
+  const { wishlistItems, logout } = useCart();
 
   const fakeOrders = [
     { id: "SLX-10422", date: "2026-04-20", total: 12200, status: "Delivered" },
@@ -22,6 +24,11 @@ const ProfilePage = () => {
     localStorage.setItem("solex-user", JSON.stringify(profile));
     setSaved(true);
     setTimeout(() => setSaved(false), 1500);
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
   };
 
   return (
@@ -64,6 +71,13 @@ const ProfilePage = () => {
               className="w-full rounded-full bg-coral-blue py-3 font-montserrat text-white"
             >
               Save Profile
+            </button>
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="w-full rounded-full border border-slate-300 py-3 font-montserrat text-slate-gray hover:border-slate-500 hover:text-slate-800"
+            >
+              Log out
             </button>
             {saved && <p className="text-center text-sm text-green-600">Profile saved</p>}
           </div>
@@ -113,6 +127,8 @@ const ProfilePage = () => {
               </div>
             )}
           </div>
+
+          <UserReviews userEmail={profile.email} userName={profile.fullName} />
         </div>
       </section>
     </main>

@@ -1,6 +1,4 @@
-import { arrowRight } from "../assets/icons";
 import { offer } from "../assets/images";
-import Button from './Button'
 
 const SpecialOffer = () => {
   return (
@@ -25,16 +23,6 @@ const SpecialOffer = () => {
         <p className='mt-6 info-text'>
           Explore a world of possibilities crafted to satisfy your unique desires, surpassing even the highest expectations. Your journey with us is nothing short of remarkable.
         </p>
-
-        <div className='mt-11 flex flex-wrap gap-4'>
-          <Button label='Shop now' iconURL={arrowRight} />
-          <Button
-            label='Learn more'
-            backgroundColor='bg-white'
-            borderColor='border-slate-gray'
-            textColor='text-slate-gray'
-          />
-        </div>
       </div>
     </section>
   );

@@ -16,6 +16,7 @@ import shoe5 from './shoe5.svg'
 import shoe6 from './shoe6.svg'
 import shoe7 from './shoe7.svg'
 import shoe8 from './shoe8.png'
+import faqs from './faqs.png'
 import shoe9 from './shoe9.svg'
 import shoe10 from './shoe10.svg'
 import shoe11 from './shoe11.svg'
@@ -28,12 +29,15 @@ import shoe17 from './shoe17.svg'
 import shoe18 from './shoe18.svg'
 import shoe19 from './shoe19.svg'
 import shoe20 from './shoe20.svg'
+import shoe21 from './shoe21.png'
 
 import thumbnailBackground from './thumbnail-background.svg'
 import thumbnailShoe1 from './thumbnail-shoe1.svg'
 import thumbnailShoe2 from './thumbnail-shoe2.svg'
 import thumbnailShoe3 from './thumbnail-shoe3.svg'
-import thumbnailShoe4 from './big-shoe4.svg'
+import aboutus from './aboutus.png'
+import howitworks from './howitworks.png'
+import paymentpolicy from './paymentpolicy.png'
 
 export {
     bigShoe1,
@@ -53,6 +57,7 @@ export {
     shoe6,
     shoe7,
     shoe8,
+    faqs,
     shoe9,
     shoe10,
     shoe11,
@@ -65,10 +70,13 @@ export {
     shoe18,
     shoe19,
     shoe20,
+    shoe21,
 
     thumbnailBackground,
     thumbnailShoe1,
     thumbnailShoe2,
     thumbnailShoe3,
-    thumbnailShoe4
+    aboutus,
+    howitworks,
+    paymentpolicy
 }

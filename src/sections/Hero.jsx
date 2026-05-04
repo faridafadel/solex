@@ -2,15 +2,14 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Button from './Button'
 
-
 import { arrowRight } from '../assets/icons'
 import { statistics } from '../constants/index'
 import { shoes } from '../constants/index'
-import { bigShoe1 } from '../assets/images'
 import ShoeCard from '../components/ShoeCard'
 
 const Hero = () => {
-  const [bigShoeImg, setBigShoeImg] = useState(bigShoe1);
+  const [activeShoeIndex, setActiveShoeIndex] = useState(0);
+  const bigShoeImg = shoes[activeShoeIndex].bigShoe;
   return <>
     <section id="home" className='w-full flex xl:flex-row flex-col justify-center min-h-screen gap-10 max-container'>
       <div className="relative xl:w-2/5 flex flex-col justify-center items-start w-full max-xl:padding-x pt-28">
@@ -42,10 +41,9 @@ const Hero = () => {
           {shoes.map((image, index) => (
             <div key={index}>
               <ShoeCard
-                index={index}
                 imgURL={image}
-                changeBigShoeImage={(shoe) => setBigShoeImg(shoe)}
-                bigShoeImg={bigShoeImg}
+                isActive={activeShoeIndex === index}
+                onSelect={() => setActiveShoeIndex(index)}
               />
             </div>
           ))}

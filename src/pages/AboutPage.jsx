@@ -1,10 +1,10 @@
-import { customer1, shoe8 } from "../assets/images";
+import { customer1, aboutus } from "../assets/images";
 
 const AboutPage = () => {
   return (
     <main className="padding-x pt-32 pb-16">
       <section className="max-container max-w-5xl">
-        <div className="mb-8 grid gap-6 lg:grid-cols-[1.2fr_1fr]">
+        <div className="mb-8 grid gap-6 lg:grid-cols-2">
           <div className="rounded-3xl bg-gradient-to-r from-[#2b0a0d] to-[#5a1111] p-8 text-white">
             <p className="font-montserrat text-xs uppercase tracking-[0.2em] text-white/70">
               About Solex
@@ -18,7 +18,7 @@ const AboutPage = () => {
             </p>
           </div>
           <div className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
-            <img src={shoe8} alt="Solex showcase" className="h-full w-full rounded-2xl object-cover" />
+            <img src={aboutus} alt="Solex showcase" className="h-96 w-full rounded-2xl object-cover" />
           </div>
         </div>
 
@@ -37,9 +37,15 @@ const AboutPage = () => {
             pressure while staying true to style.
           </p>
 
-          <h2 className="text-2xl font-palanquin font-semibold mt-10">
-            What we stand for
-          </h2>
+          <div className="mt-8">
+            <h2 className="text-2xl font-palanquin font-semibold">
+              Our Story
+            </h2>
+            <p className="mt-4 text-slate-gray font-montserrat leading-8">
+              Founded in 2020, Solex started as a small team of designers and athletes
+              passionate about creating footwear that doesn't compromise on style or performance.
+            </p>
+          </div>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             {[
               "Performance and comfort in every step.",

@@ -1,11 +1,10 @@
 
-const ShoeCard = ({ imgURL, changeBigShoeImage, bigShoeImg }) => {
-  const isActive = bigShoeImg === imgURL.bigShoe;
-
+const ShoeCard = ({ imgURL, isActive, onSelect }) => {
   return (
     <button
       type="button"
-      onClick={() => changeBigShoeImage(imgURL.bigShoe)}
+      onClick={onSelect}
+      aria-label="Select shoe"
       className={`border-2 rounded-xl cursor-pointer max-sm:flex-1 ${
         isActive ? "border-black/40" : "border-transparent"
       }`}

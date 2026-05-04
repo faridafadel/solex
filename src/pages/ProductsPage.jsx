@@ -7,15 +7,19 @@ import { formatEGP } from "../utils/currency";
 
 const ProductsPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [category, setCategory] = useState("All");
+  const priceExtent = useMemo(() => {
+    const vals = products.map((p) => p.priceValue);
+    return { min: Math.min(...vals), max: Math.max(...vals) };
+  }, []);
+  const [type, setType] = useState("All");
   const [size, setSize] = useState("All");
   const [gender, setGender] = useState("All");
   const [color, setColor] = useState("All");
-  const [maxPrice, setMaxPrice] = useState(30000);
+  const [maxPrice, setMaxPrice] = useState(priceExtent.max);
   const searchTerm = searchParams.get("search") || searchParams.get("product") || "";
 
-  const categories = useMemo(
-    () => ["All", ...new Set(products.map((product) => product.category))],
+  const typeOptions = useMemo(
+    () => ["All", ...new Set(products.map((product) => product.type))],
     []
   );
   const sizeOptions = useMemo(
@@ -36,8 +40,7 @@ const ProductsPage = () => {
       const matchesSearch = product.name
         .toLowerCase()
         .includes(searchTerm.toLowerCase().trim());
-      const matchesCategory =
-        category === "All" || product.category === category;
+      const matchesType = type === "All" || product.type === type;
       const matchesSize = size === "All" || (product.sizes || []).includes(size);
       const matchesGender = gender === "All" || product.gender === gender;
       const matchesColor = color === "All" || product.color === color;
@@ -45,21 +48,21 @@ const ProductsPage = () => {
 
       return (
         matchesSearch &&
-        matchesCategory &&
+        matchesType &&
         matchesSize &&
         matchesGender &&
         matchesColor &&
         matchesPrice
       );
     });
-  }, [searchTerm, category, size, gender, color, maxPrice]);
+  }, [searchTerm, type, size, gender, color, maxPrice]);
 
   const activeFilterCount = [
-    category !== "All",
+    type !== "All",
     size !== "All",
     gender !== "All",
     color !== "All",
-    maxPrice !== 30000,
+    maxPrice < priceExtent.max,
   ].filter(Boolean).length;
 
   const chipClass = (isActive) =>
@@ -70,11 +73,11 @@ const ProductsPage = () => {
     }`;
 
   const clearAllFilters = () => {
-    setCategory("All");
+    setType("All");
     setSize("All");
     setGender("All");
     setColor("All");
-    setMaxPrice(30000);
+    setMaxPrice(priceExtent.max);
     setSearchParams({});
   };
 
@@ -134,8 +137,8 @@ const ProductsPage = () => {
               </div>
               <input
                 type="range"
-                min={15000}
-                max={30000}
+                min={priceExtent.min}
+                max={priceExtent.max}
                 step={100}
                 value={maxPrice}
                 onChange={(event) => setMaxPrice(Number(event.target.value))}
@@ -146,15 +149,15 @@ const ProductsPage = () => {
             <div className="mt-6 space-y-6">
               <div>
                 <p className="text-xs uppercase tracking-wide text-slate-gray font-montserrat mb-2">
-                  Category
+                  Type
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {categories.map((item) => (
+                  {typeOptions.map((item) => (
                     <button
                       key={item}
                       type="button"
-                      onClick={() => setCategory(item)}
-                      className={chipClass(category === item)}
+                      onClick={() => setType(item)}
+                      className={chipClass(type === item)}
                     >
                       {item}
                     </button>

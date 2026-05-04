@@ -1,10 +1,10 @@
-import { offer } from "../assets/images";
+import { paymentpolicy } from "../assets/images";
 
 const PaymentPolicyPage = () => {
   const items = [
     {
       title: "Accepted payment methods",
-      body: "Solex accepts major credit and debit cards, verified digital wallets, and region-supported mobile payments.",
+      body: "Currently, Solex exclusively accepts cash payments. While we focus on traditional payment methods for now, we are continuously evaluating digital options to enhance your shopping experience in the future.",
     },
     {
       title: "Payment security",
@@ -34,7 +34,7 @@ const PaymentPolicyPage = () => {
                 Transparent pricing and secure transactions across all Solex orders.
               </p>
             </div>
-            <img src={offer} alt="Payment policy" className="h-44 w-full rounded-2xl object-cover" />
+            <img src={paymentpolicy} alt="Payment policy" className="h-44 w-full rounded-2xl object-cover" />
           </div>
 
           <div className="mt-8 grid gap-4">

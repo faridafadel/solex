@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { USER_STORAGE_KEY } from "../context/cartContext";
 
 const initialLogin = { email: "", password: "" };
 const initialSignup = { fullName: "", email: "", password: "", confirmPassword: "" };
@@ -58,7 +59,7 @@ const AuthPage = () => {
         mode === "login"
           ? { fullName: "Solex Member", email: loginData.email }
           : { fullName: signupData.fullName, email: signupData.email };
-      localStorage.setItem("solex-user", JSON.stringify(userPayload));
+      localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(userPayload));
       setStatus({
         type: "success",
         message: mode === "login" ? "Logged in successfully." : "Account created successfully.",

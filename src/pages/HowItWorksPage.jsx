@@ -1,4 +1,4 @@
-import { shoe6 } from "../assets/images";
+import { howitworks } from "../assets/images";
 
 const HowItWorksPage = () => {
   const steps = [
@@ -32,7 +32,7 @@ const HowItWorksPage = () => {
                 A clear checkout journey built for speed, trust, and convenience.
               </p>
             </div>
-            <img src={shoe6} alt="How it works" className="h-44 w-full rounded-2xl object-cover" />
+            <img src={howitworks} alt="How it works" className="h-44 w-full rounded-2xl object-cover" />
           </div>
 
           <div className="mt-8 grid gap-4">

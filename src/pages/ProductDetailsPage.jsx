@@ -4,6 +4,8 @@ import { products } from "../constants";
 import { useCart } from "../hooks/useCart";
 import { formatEGP } from "../utils/currency";
 import { toProductSlug } from "../utils/product";
+import ReviewsSection from "../components/ReviewsSection";
+import ReviewForm from "../components/ReviewForm";
 
 const ProductDetailsPage = () => {
   const navigate = useNavigate();
@@ -147,6 +149,21 @@ const ProductDetailsPage = () => {
             >
               Back to Products
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="max-container mt-16">
+        <div className="grid lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2">
+            <ReviewsSection
+              productName={product.name}
+              initialRating={product.rating}
+              initialReviewsCount={product.reviewsCount}
+            />
+          </div>
+          <div>
+            <ReviewForm productName={product.name} />
           </div>
         </div>
       </section>

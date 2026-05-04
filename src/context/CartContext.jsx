@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
-import { CartContext } from "./cartContext";
+import { CartContext, USER_STORAGE_KEY } from "./cartContext";
 const STORAGE_KEY = "solex-cart";
 const WISHLIST_STORAGE_KEY = "solex-wishlist";
+export { USER_STORAGE_KEY };
 
 const readInitialCart = () => {
   try {
@@ -78,6 +79,14 @@ export const CartProvider = ({ children }) => {
     setWishlistItems((current) => current.filter((item) => item.name !== productName));
   };
 
+  const logout = () => {
+    setCartItems([]);
+    setWishlistItems([]);
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(WISHLIST_STORAGE_KEY);
+    localStorage.removeItem(USER_STORAGE_KEY);
+  };
+
   const totals = useMemo(() => {
     const subtotal = cartItems.reduce(
       (sum, item) => sum + item.priceValue * item.quantity,
@@ -101,6 +110,7 @@ export const CartProvider = ({ children }) => {
         wishlistItems,
         addToWishlist,
         removeFromWishlist,
+        logout,
         ...totals,
       }}
     >

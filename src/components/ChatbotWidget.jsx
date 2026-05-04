@@ -18,13 +18,10 @@ const ChatbotWidget = () => {
     if (lower.includes("shipping") || lower.includes("delivery")) {
       return "Standard shipping is 2-5 business days. Express options appear at checkout.";
     }
-    if (lower.includes("size") || lower.includes("fit")) {
-      return "Check each product page for available sizes. I can help you compare options.";
-    }
     if (lower.includes("payment") || lower.includes("cash")) {
       return "We currently support cash on delivery and secure card checkout on eligible orders.";
     }
-    return "Thanks for your message. Tell me if you need help with orders, delivery, returns, sizing, or payment.";
+    return "Thanks for your message. Tell me if you need help with orders, delivery, returns, or payment.";
   };
 
   const sendMessage = () => {

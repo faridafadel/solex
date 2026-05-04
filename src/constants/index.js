@@ -1,9 +1,8 @@
 import { facebook, instagram, shieldTick, support, truckFast, twitter } from "../assets/icons";
-import { bigShoe1, bigShoe2, bigShoe3,bigShoe4, customer1, customer2, shoe4, shoe5, shoe6, shoe7, shoe9, shoe10, shoe11, shoe12, shoe13, shoe14, shoe15, shoe16, shoe17, shoe18, shoe19, shoe20, thumbnailShoe1, thumbnailShoe2, thumbnailShoe3,thumbnailShoe4 } from "../assets/images";
+import { bigShoe1, bigShoe2, bigShoe3, bigShoe4, customer1, customer2, shoe4, shoe5, shoe6, shoe8, shoe9, shoe10, shoe11, shoe12, shoe13, shoe14, shoe15, shoe16, shoe17, shoe18, shoe19, shoe20, shoe21, thumbnailShoe1, thumbnailShoe2, thumbnailShoe3 } from "../assets/images";
 
 export const navLinks = [
-    { href: "/#home", label: "Home" },
-    { href: "/#about-us", label: "About Us" },
+    { href: "/about", label: "About Us" },
     { href: "/products", label: "Products" },
     { href: "/cart", label: "Cart" },
     { href: "/#contact-us", label: "Contact Us" },
@@ -24,7 +23,7 @@ export const shoes = [
         bigShoe: bigShoe3,
     },
     {
-        thumbnail: thumbnailShoe4,
+        thumbnail: bigShoe4,
         bigShoe: bigShoe4,
     },
 ];
@@ -48,7 +47,7 @@ export const products = [
         description: "Built for daily miles with lightweight cushioning and responsive bounce.",
     },
     {
-        imgURL: shoe5,
+        imgURL: shoe6,
         name: "Solex Ultra Boost",
         price: "EGP 21,000.20",
         priceValue: 21000.2,
@@ -59,7 +58,7 @@ export const products = [
         description: "Stable support and smooth transitions for gym and high-intensity sessions.",
     },
     {
-        imgURL: shoe6,
+        imgURL: shoe5,
         name: "Volt Runner Pro",
         price: "EGP 22,000.20",
         priceValue: 22000.2,
@@ -70,7 +69,7 @@ export const products = [
         description: "Energy-return foam and breathable mesh for consistent performance.",
     },
     {
-        imgURL: shoe7,
+        imgURL: shoe12,
         name: "Lunar Blaze Elite",
         price: "EGP 23,000.20",
         priceValue: 23000.2,
@@ -81,7 +80,7 @@ export const products = [
         description: "Explosive court grip with ankle support for quick directional changes.",
     },
     {
-        imgURL: shoe9,
+        imgURL: shoe14,
         name: "Street Flex1",
         price: "EGP 17,500.00",
         priceValue: 17500,
@@ -91,7 +90,7 @@ export const products = [
         reviewsCount: 96,
     },
     {
-        imgURL: shoe10,
+        imgURL: shoe9,
         name: "Turo Sprint Pro",
         price: "EGP 25,300.00",
         priceValue: 25300,
@@ -111,7 +110,7 @@ export const products = [
         reviewsCount: 132,
     },
     {
-        imgURL: shoe12,
+        imgURL: shoe19,
         name: "Daily Move Lite",
         price: "EGP 16,800.00",
         priceValue: 16800,
@@ -121,7 +120,7 @@ export const products = [
         reviewsCount: 88,
     },
     {
-        imgURL: shoe13,
+        imgURL: shoe20,
         name: "Stride X Trainer",
         price: "EGP 24,400.00",
         priceValue: 24400,
@@ -131,7 +130,7 @@ export const products = [
         reviewsCount: 156,
     },
     {
-        imgURL: shoe14,
+        imgURL: shoe15,
         name: "Peak Trail Grip",
         price: "EGP 27,200.00",
         priceValue: 27200,
@@ -141,7 +140,7 @@ export const products = [
         reviewsCount: 201,
     },
     {
-        imgURL: shoe15,
+        imgURL: shoe13,
         name: "Solex Force 1",
         price: "EGP 26,100.00",
         priceValue: 26100,
@@ -184,7 +183,7 @@ export const products = [
         reviewsCount: 145,
     },
     {
-        imgURL: shoe19,
+        imgURL: shoe21,
         name: "Solex Waffle Racer",
         price: "EGP 21,600.00",
         priceValue: 21600,
@@ -194,7 +193,7 @@ export const products = [
         reviewsCount: 167,
     },
     {
-        imgURL: shoe20,
+        imgURL: shoe10,
         name: "Solex Cortex",
         price: "EGP 20,300.00",
         priceValue: 20300,
@@ -205,19 +204,20 @@ export const products = [
     },
 ];
 
+/** Per-category counters so gender/color rotate inside each category (filters always intersect). */
+const FILTER_GENDERS = ["Men", "Women"];
+const FILTER_COLORS = ["Blue", "Red", "Black", "Green"];
+const perCategoryIndex = {};
+
 products.forEach((product) => {
-    const isWomen = product.category === "Lifestyle" || product.category === "Running";
     product.availability = product.availability || "In Stock";
-    product.gender = product.gender || (isWomen ? "Women" : "Men");
-    const colorMap = {
-        Running: "Blue",
-        Training: "Red",
-        Basketball: "Green",
-        Lifestyle: "Black",
-    };
-    product.color = product.color || colorMap[product.category] || "Gray";
+    const cat = product.category;
+    const i = perCategoryIndex[cat] ?? 0;
+    perCategoryIndex[cat] = i + 1;
+    product.gender = FILTER_GENDERS[i % FILTER_GENDERS.length];
+    product.color = FILTER_COLORS[i % FILTER_COLORS.length];
     product.sizes = product.sizes || ["36", "37", "38", "39", "40", "41"];
-    product.type = product.type || "Shoes";
+    product.type = product.category;
     product.vendor = product.vendor || "Solex";
     product.sku = product.sku || `SLX-${product.name.replace(/\s+/g, "-").toUpperCase()}`;
 });
@@ -249,7 +249,7 @@ export const services = [
         },
         {
             imgURL: customer2,
-            customerName: 'Jane Doe',
+            customerName: 'Jane Cole',
             rating: 4.5,
             feedback: "The product not only met but exceeded my expectations. I'll definitely be a returning customer!"
         }

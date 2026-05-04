@@ -3,6 +3,7 @@ import ChatbotWidget from "./components/ChatbotWidget";
 import HashScrollHandler from "./components/HashScrollHandler";
 import Nav from "./components/Nav";
 import { CartProvider } from "./context/CartContext.jsx";
+import { ReviewsProvider } from "./context/ReviewsContext.jsx";
 import AboutPage from "./pages/AboutPage";
 import AuthPage from "./pages/AuthPage";
 import CartPage from "./pages/CartPage";
@@ -20,23 +21,25 @@ const App = () => {
   return (
     <BrowserRouter>
       <CartProvider>
-        <HashScrollHandler />
-        <Nav />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/products" element={<ProductsPage />} />
-          <Route path="/products/:productSlug" element={<ProductDetailsPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/signin" element={<AuthPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/faqs" element={<FaqsPage />} />
-          <Route path="/how-it-works" element={<HowItWorksPage />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-          <Route path="/payment-policy" element={<PaymentPolicyPage />} />
-        </Routes>
-        <ChatbotWidget />
+        <ReviewsProvider>
+          <HashScrollHandler />
+          <Nav />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/products/:productSlug" element={<ProductDetailsPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/signin" element={<AuthPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/faqs" element={<FaqsPage />} />
+            <Route path="/how-it-works" element={<HowItWorksPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/payment-policy" element={<PaymentPolicyPage />} />
+          </Routes>
+          <ChatbotWidget />
+        </ReviewsProvider>
       </CartProvider>
     </BrowserRouter>
   );

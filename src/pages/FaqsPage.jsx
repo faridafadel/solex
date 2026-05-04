@@ -1,4 +1,4 @@
-import { shoe4 } from "../assets/images";
+import { faqs as faqImage } from "../assets/images";
 
 const FaqsPage = () => {
   const faqs = [
@@ -16,7 +16,7 @@ const FaqsPage = () => {
     },
     {
       q: "Which payment options are accepted?",
-      a: "Solex accepts major credit/debit cards, mobile money in supported regions, and secure wallet checkout options.",
+      a: "Currently, Solex exclusively accepts Cash on Delivery (COD) for all orders. This allows you to inspect your new footwear and pay in person when the package arrives at your doorstep.",
     },
   ];
 
@@ -32,7 +32,7 @@ const FaqsPage = () => {
                 Quick answers to the most common questions from Solex customers.
               </p>
             </div>
-            <img src={shoe4} alt="FAQ shoes" className="h-44 w-full rounded-2xl object-cover" />
+            <img src={faqImage} alt="FAQ shoes" className="h-44 w-full rounded-2xl object-cover" />
           </div>
 
           <div className="mt-8 grid gap-4">
