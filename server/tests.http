@@ -1,0 +1,87 @@
+### Health check
+GET http://localhost:5001/api/health
+
+### Register (valid)
+POST http://localhost:5001/api/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "Jane Doe",
+  "email": "jane@test.com",
+  "password": "testpass123",
+  "confirmPassword": "testpass123"
+}
+
+### Login (valid)
+POST http://localhost:5001/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "jane@test.com",
+  "password": "testpass123"
+}
+
+### Register - missing fields
+POST http://localhost:5001/api/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "No Email"
+}
+
+### Register - password too short
+POST http://localhost:5001/api/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "Short",
+  "email": "short@test.com",
+  "password": "123",
+  "confirmPassword": "123"
+}
+
+### Register - passwords mismatch
+POST http://localhost:5001/api/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "Mismatch",
+  "email": "mismatch@test.com",
+  "password": "password123",
+  "confirmPassword": "different"
+}
+
+### Register - duplicate email
+POST http://localhost:5001/api/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "Jane Again",
+  "email": "jane@test.com",
+  "password": "testpass123",
+  "confirmPassword": "testpass123"
+}
+
+### Login - wrong password
+POST http://localhost:5001/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "jane@test.com",
+  "password": "wrongpass"
+}
+
+### Login - missing email
+POST http://localhost:5001/api/auth/login
+Content-Type: application/json
+
+{
+  "password": "testpass123"
+}
+
+### GET /me (with token) - replace TOKEN_HERE with actual token from login
+GET http://localhost:5001/api/auth/me
+Authorization: Bearer TOKEN_HERE
+
+### GET /me (no token)
+GET http://localhost:5001/api/auth/me
