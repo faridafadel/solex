@@ -16,7 +16,7 @@ const PopularProductCard = ({
 
   const cardDetails = (
     <>
-      <div className="bg-linear-to-l from-teal-100 to-slate-300 rounded">
+      <div className="bg-gradient-to-l from-teal-100 to-slate-300 rounded">
         <img src={imgURL} alt={name} className="w-70 h-70 object-contain" />
       </div>
       <div className="mt-8 flex flex-col justify-start gap-2.5">

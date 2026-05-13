@@ -46,7 +46,7 @@ const ProductDetailsPage = () => {
   return (
     <main className="padding-x pt-32 pb-16">
       <section className="max-container grid lg:grid-cols-2 gap-12 items-start">
-        <div className="bg-linear-to-l from-teal-100 to-slate-300 rounded-xl p-6">
+        <div className="bg-gradient-to-l from-teal-100 to-slate-300 rounded-xl p-6">
           <img src={product.imgURL} alt={product.name} className="w-full max-h-[450px] object-contain" />
         </div>
 
